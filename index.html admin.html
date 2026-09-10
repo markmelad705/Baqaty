@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>باقتي | لوحة التحكم</title>
+<style>
+*{box-sizing:border-box} body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#070b1d;color:#fff;overflow-x:hidden}
+body:before,body:after{content:"";position:fixed;border-radius:50%;filter:blur(70px);opacity:.28;pointer-events:none;z-index:-1;animation:float 10s ease-in-out infinite}
+body:before{width:330px;height:330px;background:#8b2cff;top:8%;right:-80px}body:after{width:360px;height:360px;background:#0077ff;bottom:-100px;left:-90px;animation-delay:-4s}
+@keyframes float{50%{transform:translateY(45px) translateX(-30px)}}
+.stars{position:fixed;inset:0;z-index:-2;background-image:radial-gradient(circle at 20% 20%,#fff 1px,transparent 1.5px),radial-gradient(circle at 70% 60%,#b875ff 1px,transparent 1.5px);background-size:70px 70px,110px 110px;opacity:.18;animation:move 20s linear infinite}
+@keyframes move{to{background-position:70px 70px,-110px 110px}}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 6%;background:#0a1025cc;border-bottom:1px solid #334155;backdrop-filter:blur(14px);position:sticky;top:0;z-index:5}
+.brand b{font-size:30px;background:linear-gradient(90deg,#fff,#d59bff);-webkit-background-clip:text;color:transparent}.brand small{display:block;letter-spacing:2px;color:#b9c1d3;margin-top:3px}
+.admin{border:0;border-radius:16px;padding:13px 20px;color:#fff;font-weight:bold;background:linear-gradient(135deg,#6d28d9,#c026d3);box-shadow:0 8px 25px #8b2cff66;cursor:pointer}
+.hero{text-align:center;padding:72px 20px 30px}.hero h1{font-size:clamp(31px,6vw,60px);margin:0 0 12px}.hero h1 span{color:#d79aff}.hero p{color:#c7ccda;font-size:18px;margin:0}
+.features{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:25px auto 40px;padding:0 15px}.feature{background:#121a33cc;border:1px solid #344565;border-radius:18px;padding:15px 22px;color:#d9deea}
+.grid{max-width:1200px;margin:auto;padding:0 20px 55px;display:grid;grid-template-columns:repeat(5,minmax(170px,1fr));gap:16px}
+.card{position:relative;text-align:center;padding:20px 16px;background:linear-gradient(160deg,#151d39,#0b1023);border:1px solid color-mix(in srgb,var(--accent) 75%,white 15%);border-radius:25px;box-shadow:0 15px 35px #0006,inset 0 0 30px color-mix(in srgb,var(--accent) 10%,transparent);transition:.25s;overflow:hidden}
+.card:hover{transform:translateY(-8px);box-shadow:0 18px 40px #0009,0 0 28px color-mix(in srgb,var(--accent) 40%,transparent)}.orb{width:58px;height:58px;margin:-8px auto 10px;border-radius:20px;display:grid;place-items:center;font-size:30px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 85%,#fff),#15203b);box-shadow:0 0 22px color-mix(in srgb,var(--accent) 65%,transparent);animation:pulse 2.5s infinite}@keyframes pulse{50%{transform:scale(1.09) rotate(4deg)}}
+.pkg{font-size:17px;font-weight:bold;color:#fff}.gb{font-size:52px;font-weight:bold;margin:12px 0 0}.gb small{font-size:18px;color:#cdd5e4;margin-right:4px}.mins{color:#d3d8e5;border-top:1px solid #ffffff22;margin-top:9px;padding-top:10px}.price{margin:16px auto 12px;padding:10px;border-radius:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 85%,#111),#1b2442);font-size:28px;font-weight:bold;box-shadow:0 8px 20px #0005}.price span{font-size:16px}button{font:inherit}.card button{width:100%;border:0;border-radius:13px;padding:12px;background:var(--accent);color:#fff;font-weight:bold;cursor:pointer}
+.contact{max-width:900px;margin:10px auto 70px;padding:25px 20px}.contactBox{background:linear-gradient(135deg,#17203d,#21143e);border:1px solid #8b5cf6;border-radius:28px;padding:30px;text-align:center;box-shadow:0 0 45px #7c3aed33}.contact h2{font-size:32px;margin:0 0 10px}.contact p{color:#cbd2df}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}.action{text-decoration:none;color:#fff;padding:14px 22px;border-radius:15px;font-weight:bold;background:#17213e;border:1px solid #415174}.wa{background:#128c4c}.call{background:#2563eb}.pay{background:linear-gradient(135deg,#6d28d9,#c026d3)}
+.modal{display:none;position:fixed;inset:0;background:#000b;z-index:20;padding:20px;overflow:auto}.modal.show{display:flex;align-items:center;justify-content:center}.modalBox{width:min(520px,100%);background:#111a33;border:1px solid #8754d9;border-radius:28px;padding:25px;box-shadow:0 25px 80px #000;position:relative}.close{position:absolute;left:15px;top:13px;background:#28324b;border:0;color:#fff;border-radius:12px;width:42px;height:42px;font-size:26px;cursor:pointer}.details{background:#0c1429;border:1px solid #344b71;border-radius:20px;padding:18px;margin:15px 0;line-height:2}input{width:100%;margin:7px 0;padding:15px;border-radius:13px;border:1px solid #3c4d70;background:#0c1429;color:#fff;font-size:16px}.submit{width:100%;padding:15px;border:0;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#c026d3);color:#fff;font-weight:bold;font-size:17px;cursor:pointer}
+.qrimg{width:min(430px,100%);aspect-ratio:1/1;object-fit:contain;background:#fff;border-radius:18px;display:block;margin:18px auto;padding:8px}
+.dashboard{display:none;max-width:1100px;margin:30px auto;padding:20px}.dashboard.show{display:block}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.stat{background:#151e39;border:1px solid #344b71;border-radius:16px;padding:12px 10px;text-align:center}.stat span{display:block;color:#c8d0dd;margin-bottom:5px;font-size:11.5px}.stat b{font-size:19px;color:#d9adff}table{width:100%;margin-top:20px;border-collapse:collapse;background:#111a33;border-radius:20px;overflow:hidden}th,td{padding:14px;border-bottom:1px solid #2a3858;text-align:center}th{color:#d9adff}.status{padding:6px 10px;border-radius:20px;background:#8b5cf622;color:#d9adff}
+.ordersList{display:flex;flex-direction:column;margin-top:16px;gap:10px}
+.orderRow{padding:14px 16px;background:#0f1830;border:1px solid #344b71;border-radius:14px;box-shadow:0 6px 16px #0005}
+.orderRow.paid{background:#0f1e1a;border-color:#22c55e55}
+.orderRowTop{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.orderRowName{font-weight:bold;font-size:17px}
+.orderRowPhone{color:#b7c0d6;font-size:14px}
+.orderRowLine{font-size:14.5px;color:#dbe1ee;margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 16px}
+.orderRowLine b{color:#fff;font-size:15.5px}
+.orderRowLine .profit b{color:#d3b3ff}
+.orderRowBottom{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}
+.orderStatus{padding:5px 12px;border-radius:20px;font-size:13px;font-weight:bold;white-space:nowrap}
+.orderStatus.pending{background:#f59e0b22;color:#facc15}
+.orderStatus.done{background:#22c55e22;color:#4ade80}
+.actionBtn{border:0;border-radius:10px;padding:8px 16px;background:#7c3aed;color:#fff;font-weight:bold;cursor:pointer;font-size:13.5px}
+.orderRow.paid .actionBtn{background:#334155}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:430px){nav{padding:14px 5%}.brand b{font-size:24px}.admin{padding:11px 13px}.hero{padding-top:48px}.grid{gap:10px;padding:0 10px 35px}.card{padding:15px 10px}.gb{font-size:42px}.contact{padding:10px}}
+</style>
+<style>
+body{padding:20px}
+.adminWrap{max-width:1100px;margin:0 auto}
+.loginBox{max-width:420px;margin:90px auto;background:#151e39;border:1px solid #8b5cf6;border-radius:28px;padding:30px;text-align:center}
+.loginBox input{width:100%;padding:15px;border-radius:14px;border:1px solid #415174;background:#0e1730;color:#fff;margin:15px 0;font-size:18px}
+.loginBox button{padding:14px 25px;border:0;border-radius:14px;background:linear-gradient(135deg,#7c3aed,#c026d3);color:#fff;font-weight:bold;font-size:17px;cursor:pointer}
+.dashboard{display:none;max-width:1100px;margin:0 auto;padding:20px}
+.dashboard.show{display:block}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC7vAJqieLGiE2LONAfv9h-dgJa93GbNyg",
+    authDomain: "ba2ety.firebaseapp.com",
+    databaseURL: "https://ba2ety-default-rtdb.firebaseio.com",
+    projectId: "ba2ety",
+    storageBucket: "ba2ety.firebasestorage.app",
+    messagingSenderId: "419212814118",
+    appId: "1:419212814118:web:3fdca50aeae44646ea83e7"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
+</script>
+</head>
+<body>
+<div class="stars"></div>
+
+<div id="loginBox" class="loginBox">
+  <h1>🔐 لوحة تحكم باقتي</h1>
+  <p>هذه الصفحة خاصة بصاحب الموقع فقط</p>
+  <input id="adminPass" type="password" placeholder="أدخل كلمة المرور" autocomplete="current-password">
+  <button onclick="login()">دخول لوحة التحكم</button>
+  <p id="loginError" style="color:#f87171;font-size:13px;display:none;margin-top:10px"></p>
+</div>
+
+<section id="dashboard" class="dashboard">
+  <div class="contactBox" style="text-align:right">
+    <h2 style="font-size:19px;margin:0 0 4px">👑 لوحة تحكم باقتي</h2>
+    <p style="font-size:13px;margin:0">إدارة العملاء والطلبات والمدفوعات والمبيعات</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span>إجمالي الطلبات</span><b id="totalOrders">0</b></div>
+    <div class="stat"><span>الطلبات المدفوعة</span><b id="paidOrders">0</b></div>
+    <div class="stat"><span>إجمالي المبيعات</span><b id="totalSales">0 ج</b></div>
+    <div class="stat"><span>إجمالي سعر الجملة</span><b id="totalWholesale">0 ج</b></div>
+    <div class="stat"><span>إجمالي الربح</span><b id="totalProfit">0 ج</b></div>
+  </div>
+
+  <div class="contactBox" style="margin-top:25px;text-align:right">
+    <h2 style="font-size:25px">📋 طلبات العملاء</h2>
+    <div id="ordersList" class="ordersList"></div>
+  </div>
+</section>
+
+<script>
+// كلمة المرور مخزنة كـ hash مشفر (SHA-256) مش نص صريح، عشان محدش يقدر يقرأها من الكود
+const ADMIN_PASSWORD_HASH = 'ce8457d59078a699acb70416f88155a96a906b7b7aad43708402e3a3bcc8a4b4';
+
+// الطلبات هتتخزن هنا كـ { firebaseKey: orderData }
+let orders = {};
+let listenerStarted = false;
+
+async function sha256(text){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+async function login(){
+  const entered = document.getElementById('adminPass').value;
+  const errEl = document.getElementById('loginError');
+  errEl.style.display='none';
+  const hash = await sha256(entered);
+  if(hash === ADMIN_PASSWORD_HASH){
+    document.getElementById('loginBox').style.display='none';
+    document.getElementById('dashboard').classList.add('show');
+    startListening();
+  } else {
+    errEl.textContent = 'كلمة المرور غير صحيحة';
+    errEl.style.display='block';
+  }
+}
+
+function startListening(){
+  if(listenerStarted) return;
+  listenerStarted = true;
+  // بيسمع أي تغيير في قاعدة البيانات لحظيًا (طلب جديد، دفع، إلخ) ويحدث الشاشة تلقائيًا
+  db.ref('orders').on('value', (snapshot)=>{
+    orders = snapshot.val() || {};
+    renderDashboard();
+  });
+}
+
+// أسعار الجملة حسب الجيجا (متاخده من قايمة الأسعار بتاعتك)
+const WHOLESALE_BY_GB = {
+  10:160, 15:200, 20:250, 25:275, 30:315,
+  35:350, 40:400, 45:440, 50:465, 55:490, 60:525
+};
+
+function getWholesale(gb){
+  return WHOLESALE_BY_GB[Number(gb)] ?? 0;
+}
+
+function renderDashboard(){
+  const list_el=document.getElementById('ordersList');
+  const entries = Object.entries(orders).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
+
+  if(entries.length===0){
+    list_el.innerHTML='<p style="text-align:center;color:#8993ab;padding:30px 0">لا توجد طلبات حتى الآن</p>';
+  } else {
+    list_el.innerHTML=entries.map(([key,o])=>{
+      const retail=Number(o.retail)||0;
+      const wholesale=getWholesale(o.gb);
+      const profit=retail-wholesale;
+      return `<div class="orderRow ${o.paid?'paid':''}">
+        <div class="orderRowTop">
+          <span class="orderRowName">${o.name||''}</span>
+          <span class="orderRowPhone">📱 ${o.phone||''}</span>
+        </div>
+        <div class="orderRowLine">
+          <span>الباقة: <b>${o.gb||''} GB</b></span>
+          <span>سعر البيع: <b>${retail} ج</b></span>
+          <span>سعر الجملة: <b>${wholesale} ج</b></span>
+          <span class="profit">الربح: <b>${profit} ج</b></span>
+        </div>
+        <div class="orderRowBottom">
+          <span class="orderStatus ${o.paid?'done':'pending'}">${o.paid?'✓ تم الدفع':'⏳ بانتظار الدفع'}</span>
+          <button class="actionBtn" onclick="togglePayment('${key}')">${o.paid?'إلغاء الدفع':'تأكيد الدفع'}</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  const list=Object.values(orders);
+  const paid=list.filter(o=>o.paid);
+  const sales=paid.reduce((s,o)=>s+Number(o.retail||0),0);
+  const wholesaleTotal=paid.reduce((s,o)=>s+getWholesale(o.gb),0);
+
+  document.getElementById('totalOrders').textContent=list.length;
+  document.getElementById('paidOrders').textContent=paid.length;
+  document.getElementById('totalSales').textContent=sales+' ج';
+  document.getElementById('totalWholesale').textContent=wholesaleTotal+' ج';
+  document.getElementById('totalProfit').textContent=(sales-wholesaleTotal)+' ج';
+}
+
+function togglePayment(key){
+  const o=orders[key];
+  if(!o) return;
+  db.ref('orders/'+key+'/paid').set(!o.paid);
+}
+</script>
+</body>
+</html>
